@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import '@/app/globals.css';
+import BackgroundPattern from '@/components/background-pattern';
+import AppHeader from '@/components/app-header';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -17,14 +19,18 @@ export const metadata: Metadata = {
   description: 'Track your expenses with ease',
 };
 
-export default function RootLayout({
+export default function PortalLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-zinc-200`}>{children}</body>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-zinc-200`}>
+        <BackgroundPattern />
+        <AppHeader />
+        {children}
+      </body>
     </html>
   );
 }
